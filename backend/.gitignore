@@ -1,1 +1,6 @@
-myvenv
+bin/
+include/
+lib/
+share/
+
+pyenv.cfg
