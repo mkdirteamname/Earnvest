@@ -46,6 +46,16 @@ export const Navbar = () => {
             <p className="text-gray-900 dark:text-gray-100">Profile</p>
             </Link>
             <DropdownMenu>
+            <DropdownMenuTrigger>Portfolio</DropdownMenuTrigger>
+            <DropdownMenuContent>
+            <DropdownMenuLabel>Your Portfolio</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <Link href="/portfolio/visuals"><DropdownMenuItem>Visualized</DropdownMenuItem></Link>
+            <Link href="/portfolio/stats"><DropdownMenuItem>Stats</DropdownMenuItem></Link>
+            <Link href="/portfolio/optimal"><DropdownMenuItem>Optimized Portfolio</DropdownMenuItem></Link>
+            </DropdownMenuContent>
+            </DropdownMenu>
+            <DropdownMenu>
             <DropdownMenuTrigger>Insights</DropdownMenuTrigger>
             <DropdownMenuContent>
             <DropdownMenuLabel>Global Insights</DropdownMenuLabel>
