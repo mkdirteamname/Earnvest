@@ -54,6 +54,7 @@ export const Navbar = () => {
             <Link href="/assets/stocks"><DropdownMenuItem>Stocks</DropdownMenuItem></Link>
             <Link href="/assets/bonds"><DropdownMenuItem>Bonds</DropdownMenuItem></Link>
             <Link href="/assets/mfs"><DropdownMenuItem>Mutual Funds</DropdownMenuItem></Link>
+            <Link href="/assets/news"><DropdownMenuItem>News</DropdownMenuItem></Link>
             </DropdownMenuContent>
             </DropdownMenu>
             <button className="text-gray-900 dark:text-gray-100" onClick={handleLogOut}>Logout</button>

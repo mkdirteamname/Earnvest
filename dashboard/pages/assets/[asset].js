@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import Stocks from "@/components/Stocks";
+import News from "@/components/News";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -12,30 +13,35 @@ export default function Assets() {
         <div>
       <Navbar />
       {asset === "gold" ? (
-        <div className="flex justify-center text-center">
-          <p className="bold text-xl">Gold</p>
+        <div className="flex p-4 flex-col items-center justify-center min-h-screen bg-gray-100">
+          <p className="text-4xl font-bold mb-4">Gold</p>
           <Stocks ticker="XAUUSD" />
           </div>
         ) : asset === "bonds" ? (
-            <div>
-                <p>Bonds</p>
-                <Stocks ticker="US10Y" />
-                <Stocks ticker="IN10Y" />
+            <div className="flex p-4 flex-col items-center justify-center min-h-screen bg-gray-100">
+                <p className="text-4xl font-bold mb-4">Bonds</p>
             </div>
             ) : asset === "stocks" ? (
-            <div>
-                <p>Stocks</p>
-                <input type="text" value={ticker} onChange={(event) => setTicker(event.currentTarget.value)} />
+            <div className="flex p-4 flex-col items-center justify-center min-h-screen bg-gray-100">
+                <p className="text-4xl font-bold mb-4">Stocks</p>
+                <label htmlFor="ticker">Enter Ticker</label>
+                <input className="m-2" placeholder="AAPL" type="text" value={ticker} onChange={(event) => setTicker(event.currentTarget.value)} />
                 <Stocks ticker={ticker} />
             </div>
             ) : asset === "mfs" ? (
-            <div>
-                <p>Mutual Funds</p>
+            <div className="flex p-4 flex-col items-center justify-center min-h-screen bg-gray-100">
+                <p className="text-4xl font-bold mb-4">Mutual Funds</p>
                 <Stocks ticker="TVF2G" />
             </div>
-            ) : (
-            <div>
-                <p>404 Not Found</p>
+            ) : asset === "news" ? ( 
+            <div className="flex p-4 flex-col items-center justify-center min-h-screen bg-gray-100">
+                <p className="text-4xl font-bold mb-4">News</p>
+                <News />
+            </div>
+            )
+          : (
+            <div className="flex p-4 flex-col items-center justify-center min-h-screen bg-gray-100">
+                <p className="text-4xl font-bold mb-4">404 Not Found</p>
             </div>
             )
       }
