@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 export default function Profile() {
     const [user, setUser] = useState(null);
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState({});
     const router = useRouter();
     useEffect(() => {
         onAuthStateChanged(async (user) => {
@@ -17,12 +17,9 @@ export default function Profile() {
                 console.log(user);
                 const docRef = doc(db, "users", user.uid);
                 const userSnap = await getDoc(docRef);
-                console.log("Get Doc triggered in Profile.js");
                 console.log(userSnap.data());
                 setUserData(userSnap.data());
-            } else {
-                router.push("/login");
-            }
+            }  
         });
     }, []);
     return (
@@ -32,8 +29,8 @@ export default function Profile() {
             <div>
                 <h1>Profile</h1>
                 <div>
-                    <h2>Email: {user?.Email}</h2>
-                    <h2>Username: {user?.Username}</h2>
+                    <h2>Email: {userData?.Email}</h2>
+                    <h2>Username: {userData?.Username}</h2>
                 </div>
             </div>
         }

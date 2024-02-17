@@ -9,11 +9,11 @@ export const signup = async (email, password, username) => {
         console.log("userCredential: ",userCredential);
         console.log("userCredential.user: ",userCredential.user);
         if(userCredential && userCredential.user){
-           const docRef = await addDoc(collection(db,"users"),{
+            const docRef = doc(db, "users", userCredential.user.uid);
+           await setDoc(docRef, {
                 Email: email,
                 Username: username,
             });
-            console.log("ID: ",docRef.id)
         }
     } catch (error) {
         return error;
