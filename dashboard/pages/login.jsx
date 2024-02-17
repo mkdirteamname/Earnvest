@@ -1,6 +1,4 @@
 import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
 import { signin } from "@/firebase/auth"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/router"
@@ -31,11 +29,11 @@ export default function Component() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" placeholder="m@example.com" required />
+          <input id="email" placeholder="m@example.com" required value={email} onChange={(event) => setEmail(event.currentTarget.value)}/>
         </div>
         <div className="space-y-2">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" required type="password" />
+          <input id="password" required type="password" value={password} onChange={(event) => setPassword(event.currentTarget.value)}/>
         </div>
         <button className="w-full bg-black text-white" type="submit" onClick={handleSubmit}>
           Log In

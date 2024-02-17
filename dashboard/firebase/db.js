@@ -1,4 +1,4 @@
-import { db } from "../firebase";
+import { db } from "./config.js";
 import { doc, getDoc } from "firebase/firestore";
 
 export const getUser = async (uid) => {

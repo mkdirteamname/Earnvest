@@ -1,17 +1,20 @@
-import { auth } from "../firebase";
+import { auth, db } from "./config.js";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, setDoc, doc } from "firebase/firestore";
 
 const provider = new GoogleAuthProvider();
 export const signup = async (email, password, username) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        await setDoc(doc(db, "users", user.uid), {
-        email,
-        username,
-        });
-        return user;
+        console.log("userCredential: ",userCredential);
+        console.log("userCredential.user: ",userCredential.user);
+        if(userCredential && userCredential.user){
+           const docRef = await addDoc(collection(db,"users"),{
+                Email: email,
+                Username: username,
+            });
+            console.log("ID: ",docRef.id)
+        }
     } catch (error) {
         return error;
     }
@@ -27,13 +30,14 @@ export const signin = async (email, password) => {
     }
     }
 
-export const signout = async () => {
+export async function signout() {
     try {
-        await signOut();
+            console.log("Signing out");
+            return auth.signOut();
     } catch (error) {
-        return error;
+            console.error("Error signing out with Google", error);
     }
-    }
+}
 
 export const onAuthStateChanged = (callback) => {
     return auth.onAuthStateChanged(callback);

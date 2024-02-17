@@ -20,7 +20,7 @@ export default function Component() {
 
     const handleSubmit = async () => {
         try {
-            const user = await signup(email, password);
+            const user = await signup(email, password, username);
             setUser(user);
             router.push("/home");
         } catch (error) {

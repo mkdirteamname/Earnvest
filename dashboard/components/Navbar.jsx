@@ -2,7 +2,7 @@ import Link from "next/link";
 import { onAuthStateChanged } from "../firebase/auth";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-
+import { signout } from "../firebase/auth";
 
 export const Navbar = () => {
     const [user, setUser] = useState(null);    
@@ -11,13 +11,17 @@ export const Navbar = () => {
         onAuthStateChanged(async (user) => {
             if (user) {
                 setUser(user);
-                router.push("/home");
             } else {
                 setUser(null);
-                router.push("/login");
             }
         });
     }, []);
+
+async function handleLogOut(e){
+    e.preventDefault();
+    const response = await signout();
+    router.push("/");
+  }
 
     return (
       <header className="px-4 lg:px-6 h-14 flex items-center">
@@ -33,9 +37,7 @@ export const Navbar = () => {
                 <Link href="/profile">
                 <p className="text-gray-900 dark:text-gray-100">Profile</p>
                 </Link>
-                <Link href="/logout">
-                <p className="text-gray-900 dark:text-gray-100">Logout</p>
-                </Link>
+                <button className="text-gray-900 dark:text-gray-100" onClick={handleLogOut}>Logout</button>
             </nav>
             )}
         {!user && (
