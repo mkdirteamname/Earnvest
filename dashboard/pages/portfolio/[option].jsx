@@ -8,14 +8,14 @@ function portfolio() {
     const { option } = router.query;
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
-    const [optimize, setOptimize] = useState(null);
+    const [optimize, setOptimize] = useState({});
 
     const getOptimal = async () => {
         const data = {
             start_date: '2024-01-01',
             end_date: '2024-02-16'
         }
-        axios.post('http://localhost:5000/optimize_portfolio', data, {
+        await axios.post('http://localhost:5000/optimize_portfolio', data, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -47,7 +47,7 @@ function portfolio() {
                 <input type="date" value={endDate} onChange={(e) => {setEndDate(e.target.value)}} required></input>
             <button onClick={getOptimal}>Submit</button>
             { optimize && 
-                <p>{optimize?.weights}</p>
+                <p>{parseInt(optimize['expected_return']).toPrecision(4)}</p>
             }
             </div>
         ) : (
