@@ -3,6 +3,7 @@ import { onAuthStateChanged } from "../firebase/auth";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { signout } from "../firebase/auth";
+import Image from "next/image";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,8 +35,8 @@ export const Navbar = () => {
     return (
         <header className="px-4 lg:px-6 h-14 flex items-center">
         <Link className="flex items-center justify-center" href="#">
-        <MountainIcon className="h-6 w-6" />
-        <p className="m-4 text-black">XYZ</p>
+         <Image src="/logo.jpeg" width={100} height={20}/>
+          <span className="sr-only">EARNVEST</span>
         </Link>
         {user && (
             <nav className="flex items-center ml-auto space-x-4">
