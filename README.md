@@ -26,6 +26,4 @@ Managing an investment portfolio effectively requires a balance between risk and
    - Include various asset classes, such as stocks, bonds, and possibly alternative investments.
    - Enable automatic rebalancing based on market conditions, economic indicators, or predefined rules.
 
-5) **Real-time Chatbot (StockSage)**:
-   - Deployed on Streamlit, StockSage provides real-time graph plotting capabilities
-     based on user prompts for enhanced portfolio monitoring and analysis.
+5) **Real-time Chatbot (StockSage)**: Deployed on Streamlit, StockSage provides real-time graph plotting capabilities for enhanced portfolio monitoring and analysis.
