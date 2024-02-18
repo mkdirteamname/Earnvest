@@ -50,11 +50,18 @@ function portfolio({chart_data}) {
         }); 
     }, []);
 
+    let amount=0, risk=0, time=0, exp_return=0, exp_amount=0;
+    if (userFinData) {
+        amount = userFinData.amount;
+        risk = userFinData.risk;
+        time = userFinData.period;
+        exp_return = parseInt(optimize['expected_return']);
+        exp_amount = amount * (1 + exp_return/100)**time;
+    }
     const handleStatsSubmit = async () => {
         if (statsSubmit) {
             return;
         }
-    var amount=0, risk=0, time=0, exp_return=0, exp_amount=0;
         
         if (userFinData) {
         amount = userFinData.amount;
@@ -81,7 +88,7 @@ function portfolio({chart_data}) {
             start_date: '2024-01-01',
             end_date: '2024-02-16'
         }
-        await axios.post('https://earnvest.render.com/optimize_portfolio', data, {
+        await axios.post('http://localhost:5000/optimize_portfolio', data, {
             headers: {
                 'Content-Type': 'application/json'
             }
