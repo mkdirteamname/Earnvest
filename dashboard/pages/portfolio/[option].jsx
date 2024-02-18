@@ -81,7 +81,7 @@ function portfolio({chart_data}) {
             start_date: '2024-01-01',
             end_date: '2024-02-16'
         }
-        await axios.post('http://localhost:5000/optimize_portfolio', data, {
+        await axios.post('https://earnvest.render.com/optimize_portfolio', data, {
             headers: {
                 'Content-Type': 'application/json'
             }
