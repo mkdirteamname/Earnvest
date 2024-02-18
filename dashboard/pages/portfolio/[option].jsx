@@ -35,6 +35,8 @@ function portfolio({chart_data}) {
     const [optimize, setOptimize] = useState({});
     const [user, setUser] = useState(null);
     const [userFinData, setUserFinData] = useState(null);
+    const [statsSubmit, setStatsSubmit] = useState(false);
+
     useEffect(() => {
         onAuthStateChanged(async (user) => {
             setUser(user);
@@ -48,13 +50,20 @@ function portfolio({chart_data}) {
         }); 
     }, []);
 
-    let amount, risk, time, exp_return, exp_amount;
-    if (userFinData) {
+    const handleStatsSubmit = async () => {
+        if (statsSubmit) {
+            return;
+        }
+    var amount=0, risk=0, time=0, exp_return=0, exp_amount=0;
+        
+        if (userFinData) {
         amount = userFinData.amount;
         risk = userFinData.risk;
         time = userFinData.period;
         exp_return = parseInt(optimize['expected_return']);
         exp_amount = amount * (1 + exp_return/100)**time;
+        setStatsSubmit(true);
+    }
     }
 
     const sectors = {};
@@ -117,9 +126,11 @@ function portfolio({chart_data}) {
         ) : option === "stats" ? (
             <div className="flex flex-col items-center min-h-screen">
             <p className="text-4xl font-bold">Statistics on your Portfolio</p>
-            <p className="text-xl text-center p-4">Total Portfolio Size: INR {sum}</p>
-            <p className="text-xl text-center p-4">Total Number of Stocks: {chart_data.length}</p>
-            <p className="text-xl text-center p-4">Sectors allocated: {Object.keys(sectors).length}</p>
+            <label className="text-xl text-center p-4">Upload your CSV<input type="file" itemType="csv" className="p-4 text-center" /></label>
+            <button className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-blue-600 w-50%" onClick={handleStatsSubmit}>Submit</button>
+            <p className="text-xl text-center p-4">Total Portfolio Size: INR {statsSubmit ? sum : 0}</p>
+            <p className="text-xl text-center p-4">Total Number of Stocks: {statsSubmit ? chart_data.length : 0}</p>
+            <p className="text-xl text-center p-4">Sectors allocated: {statsSubmit ? Object.keys(sectors).length : 0}</p>
             </div>
         ) : option === "optimal" ? (
             <div className="flex flex-col space-y-4 items-center justify-center">
