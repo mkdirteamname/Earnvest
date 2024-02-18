@@ -28,4 +28,4 @@ Managing an investment portfolio effectively requires a balance between risk and
 
 5) **Real-time Chatbot (StockSage)**:
    - Deployed on Streamlit, StockSage provides real-time graph plotting capabilities based on user
-   - prompts for enhanced portfolio monitoring and analysis.
+     prompts for enhanced portfolio monitoring and analysis.
