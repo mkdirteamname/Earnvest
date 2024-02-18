@@ -32,3 +32,15 @@ Managing an investment portfolio effectively requires a balance between risk and
 ## Bonus Features
 Incorporated behavioral finance principles to assist users in making more rational decisions, especially during market volatility. Utilized a quiz to assess the user's risk appetite, providing nudges, educational content, or simulations to demonstrate the impact of emotional decision-making. Additionally, included supporting YouTube videos for investor education.
 
+## Challenges Faced
+- Poor documentation and deprecated use cases of various brokerage platform APIs that we were trying to fetch user data from, leading us to create a sample dataset for testing our optimization algorithm.
+- Frontend integration with various backends was challenging.
+- Finding a suitable optimization algorithm and converting it into a usable Flask app.
+- Firebase integration at the beginning was difficult but eventually figured out.
+
+## Future Enhancements
+- **Automated Trading**: Implement a trading bot using algorithmic strategies to automate trades based on predefined rules and market conditions.
+- **Risk Management Features**: Incorporate risk management tools and strategies into the trading bot to minimize potential losses.
+- **Backtesting and Optimization**: Develop tools for backtesting trading strategies and optimizing them for better performance.
+- **Real-time Monitoring and Alerts**: Enable real-time monitoring of trades and provide alerts for significant market events or changes in the portfolio.
+- **Integration with Exchanges**: Integrate the trading bot with various exchanges to execute trades seamlessly across multiple markets.
