@@ -42,5 +42,4 @@ Incorporated behavioral finance principles to assist users in making more ration
 - **Automated Trading**: Implement a trading bot using algorithmic strategies to automate trades based on predefined rules and market conditions.
 - **Risk Management Features**: Incorporate risk management tools and strategies into the trading bot to minimize potential losses.
 - **Backtesting and Optimization**: Develop tools for backtesting trading strategies and optimizing them for better performance.
-- **Real-time Monitoring and Alerts**: Enable real-time monitoring of trades and provide alerts for significant market events or changes in the portfolio.
 - **Integration with Exchanges**: Integrate the trading bot with various exchanges to execute trades seamlessly across multiple markets.
