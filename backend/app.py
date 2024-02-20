@@ -15,8 +15,7 @@ CORS(app)
 api = Api(app)
 
 
-dataset = pd.read_csv('new_stock.csv')
-dataset['Ticker'] = dataset['Ticker']+'.NS'
+dataset = pd.DataFrame()
 
 
 # Function to fetch historical stock prices
@@ -29,6 +28,24 @@ def fetch_stock_prices(tickers, start_date, end_date):
 
 
 @app.route('/optimize_portfolio', methods=['POST'])
+#test this code please 
+#(start)
+def upload_csv():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part in the request'}),  400
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No file selected for uploading'}),  400
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        # Read the uploaded CSV file into a DataFrame
+        global dataset
+        dataset = pd.read_csv(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        dataset['Ticker'] = dataset['Ticker'] + '.NS'
+        return jsonify({'message': 'File uploaded and dataset updated successfully'}),  200
+#(end)
+        
 def optimize_portfolio():
     data = request.json
     tickers = dataset['Ticker'].tolist()
